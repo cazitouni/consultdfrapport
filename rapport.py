@@ -53,7 +53,7 @@ def fetch_map(geom, id):
 
 def create_pdf(parcelle, proprios, locaux):
     map_data = fetch_map(parcelle['geometry']['coordinates'], parcelle['properties']['dnupla'])
-    title_paragraph = Paragraph(f"Relevé Parcellaire - Parcelle {parcelle["id"]}", title_style)
+    title_paragraph = Paragraph(f"Relevé Parcellaire - Parcelle {parcelle['id']}", title_style)
     title_table_data = [[title_paragraph]]
     title_table = Table(title_table_data, colWidths=[562])
     title_table.setStyle(title_table_style)
