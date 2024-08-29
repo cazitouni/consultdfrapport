@@ -85,7 +85,7 @@ def create_pdf(parcelle, proprios, locaux):
         ).strip().capitalize()
         adrprop = (
             f"{(prop.get('dlign3') or '').strip()}"
-            f"{re.sub(r'([^\\\\p{Print}])(RUE)', r'\\1 \\2', re.sub(r'(PARC|QUAI)([^\\\\p{Print}])', r'\\1 \\2', (prop.get('dlign4') or '').strip('0')))}"
+            f"{re.sub(r'([^\\p{Print}])(RUE)', r'\\1 \\2', re.sub(r'(PARC|QUAI)([^\\p{Print}])', r'\\1 \\2', (prop.get('dlign4') or '').strip('0')))}"
             f"{(prop.get('dlign5') or '').strip()} { (prop.get('dlign6') or '').strip()}"
         ).strip().capitalize()
         nomnss = (
