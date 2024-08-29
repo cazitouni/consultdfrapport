@@ -7,7 +7,7 @@ from rapport import create_pdf
 from celery import Celery
 from io import BytesIO
 
-app = FastAPI(root_path='/docs')
+app = FastAPI()
 app.add_middleware(RateLimitMiddleware)
 
 @app.get("/parcelle_rapport")
