@@ -1,0 +1,9 @@
+uvicorn
+fastapi
+reportlab
+valkey
+requests
+celery
+celery[redis]
+jinja2
+python-decouple
