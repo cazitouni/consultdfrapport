@@ -67,7 +67,7 @@ def create_pdf(parcelle, proprios, locaux):
         ['Code', (parcelle["properties"]["ccosec"] + parcelle["properties"]["dnupla"])],
         ['Commune', parcelle["properties"]["ccocom"]],
         ['Code Rivoli', parcelle["properties"]["ccoriv"]],
-        ['Date de l\'acte', parcelle["properties"]["jdatat"]],
+        ['Date de l\'acte', f"{parcelle['properties']['jdatat'][:2]}/{parcelle['properties']['jdatat'][2:4]}/{parcelle['properties']['jdatat'][4:]}" if parcelle['properties']['jdatat'] else None],
         ['Contenance', str(parcelle["properties"]["dcntpa"]) + " m\u00B2"],
         ['Adresse', " ".join(filter(None, [parcelle["properties"].get("dnuvoi"),parcelle["properties"].get("dindic"),parcelle["properties"].get("cconvo"),parcelle["properties"].get("dvoilib")])).title().strip("0")],
         ['Urbaine', 'Oui' if parcelle["properties"]["gurbpa"].lower() == 'u' else 'Non'],
