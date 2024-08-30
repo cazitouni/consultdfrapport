@@ -19,7 +19,7 @@ async def parcelle_rapport(
     Retourne un pdf comprenant tous les rapports pour une liste de parcelles
     """
     task = fetch_parcelle_data.delay(parcelle, token)
-    result = task.get(timeout=20)
+    result = task.get(timeout=35)
     if result == 401:
         raise HTTPException(status_code=401, detail="Accès non autorisé - jeton invalide")
     if result == 403:
