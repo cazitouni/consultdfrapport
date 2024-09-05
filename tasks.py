@@ -29,5 +29,5 @@ def fetch_parcelle_data(parcelle, token):
     if not parcelle_data or 'features' not in parcelle_data or not parcelle_data['features']:
         return 404
     proprietaire_data = requests.get(f'https://apidf-preprod.cerema.fr/ff/proprios?code_insee={parcelle[0:5]}&fields=all&idprocpte={parcelle_data["features"][0]["properties"]["idprocpte"]}', headers=headers, timeout=10).json()
-    locaux_data = requests.get(f'https://apidf-preprod.cerema.fr/ff/locaux?code_insee={parcelle[0:5]}&fields=all&idpar={parcelle}}', headers=headers, timeout=10).json()
+    locaux_data = requests.get(f'https://apidf-preprod.cerema.fr/ff/locaux?code_insee={parcelle[0:5]}&fields=all&idpar={parcelle}', headers=headers, timeout=10).json()
     return create_pdf(parcelle_data['features'][0], proprietaire_data.get("results", []), locaux_data.get("results", []))
