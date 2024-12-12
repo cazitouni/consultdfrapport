@@ -4,6 +4,8 @@ En lien avec l'[API foncier](https://consultdf.cerema.fr/consultdf/services/apid
 
 Pour ce faire il suffit d'être inscrit sur la plateforme et de disposer d'un [jeton d'authentification ](https://consultdf.cerema.fr/consultdf/services/apidf/token)ainsi que d'un numéro de parcelle.
 
+Un instance publique est disponible à [cette adresse](https://rapportdf.metrotopic.net/docs)
+
 ## Installation
 
 Pourt fonctionner l'API a besoin au préalable d'un serveur [valkey]((https://github.com/valkey-io/valkey)

@@ -1,3 +1,4 @@
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, Query, HTTPException
 from tasks import fetch_parcelle_data, celery_app
 from fastapi.responses import StreamingResponse
@@ -9,6 +10,14 @@ from io import BytesIO
 
 app = FastAPI()
 app.add_middleware(RateLimitMiddleware)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/parcelle_rapport")
 async def parcelle_rapport(
