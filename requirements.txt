@@ -7,3 +7,4 @@ celery
 celery[redis]
 jinja2
 python-decouple
+psycopg2
