@@ -6,10 +6,11 @@ from decouple import config
 import valkey
 import time
 
-valkey_client = valkey.Valkey(host=config('VALKEY_HOST'), port=6379)
+valkey_client = valkey.Valkey(host=config("VALKEY_HOST"), port=6379)
 
-RATE_LIMIT = int(config('RATE_LIMIT'))
-PERIOD = int(config('PERIOD'))
+RATE_LIMIT = int(config("RATE_LIMIT"))
+PERIOD = int(config("PERIOD"))
+
 
 class RateLimitMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
@@ -27,12 +28,14 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
             response = await call_next(request)
             return response
         except HTTPException as exc:
-            return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
+            return JSONResponse(
+                status_code=exc.status_code, content={"detail": exc.detail}
+            )
 
     def get_user_id(self, request: Request):
-        x_forwarded_for = request.headers.get('X-Forwarded-For')
+        x_forwarded_for = request.headers.get("X-Forwarded-For")
         if x_forwarded_for:
-            ip = x_forwarded_for.split(',')[0].strip()
+            ip = x_forwarded_for.split(",")[0].strip()
         else:
             ip = request.client.host
         return ip
